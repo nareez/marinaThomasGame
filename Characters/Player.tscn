@@ -1,0 +1,217 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Assets/Main Characters/Thomas/adventurer-run-04.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Main Characters/Thomas/adventurer-run-05.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Main Characters/Thomas/adventurer-run-01.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Main Characters/Thomas/adventurer-run-03.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Main Characters/Thomas/adventurer-run-00.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Main Characters/Thomas/adventurer-run-02.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=11]
+[ext_resource path="res://Assets/Main Characters/Thomas/adventurer-fall-01.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Main Characters/Thomas/adventurer-jump-01.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Main Characters/Thomas/adventurer-jump-02.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Main Characters/Thomas/adventurer-jump-03.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Main Characters/Thomas/adventurer-jump-00.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Main Characters/Thomas/adventurer-fall-00.png" type="Texture" id=21]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 8.0
+height = 14.0
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("texture:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("texture:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("anim:playback_speed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "fall"
+length = 0.5
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 21 ), ExtResource( 16 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("anim:playback_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "jump"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 20 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "jump"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("anim:playback_speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "run"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("anim:playback_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.7 ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+scale = Vector2( 2, 2 )
+collision_layer = 2
+collision_mask = 29
+script = ExtResource( 11 )
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2( 3, 4 )
+shape = SubResource( 2 )
+
+[node name="camera" type="Camera2D" parent="."]
+position = Vector2( 108, -32.5 )
+current = true
+drag_margin_left = 0.4
+drag_margin_top = 0.32
+drag_margin_right = 0.0
+drag_margin_bottom = 0.33
+editor_draw_screen = false
+
+[node name="ground_check" type="RayCast2D" parent="."]
+position = Vector2( 0, 14.5 )
+enabled = true
+cast_to = Vector2( 0, 5 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "run"
+anims/RESET = SubResource( 4 )
+anims/fall = SubResource( 5 )
+anims/jump = SubResource( 6 )
+anims/run = SubResource( 3 )
+
+[node name="texture" type="Sprite" parent="."]
+texture = ExtResource( 9 )
