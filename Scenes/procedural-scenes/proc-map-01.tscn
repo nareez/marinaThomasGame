@@ -870,9 +870,8 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 } ]
 47/z_index = 0
 
-[sub_resource type="SegmentShape2D" id=26]
-a = Vector2( 1, 0 )
-b = Vector2( 0, 288 )
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 34.5, 149 )
 
 [node name="proc-map-01" type="Node2D"]
 script = ExtResource( 2 )
@@ -895,7 +894,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="collision" type="CollisionShape2D" parent="whenLoadNextScene"]
-position = Vector2( 496, 0 )
+position = Vector2( 32, 144 )
 shape = SubResource( 26 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
