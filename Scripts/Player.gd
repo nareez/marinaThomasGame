@@ -4,7 +4,7 @@ onready var ground_check = $ground_check
 onready var anim = $anim
 var velocity = Vector2.ZERO
 var move_speed = 240
-const MAX_MOVESPEED = 40000
+const MAX_MOVESPEED = 4000
 var gravity = 20
 var jump_force = -750
 var is_grounded = true
@@ -13,13 +13,13 @@ var animState = RUN
 var is_do_jump = false
 var is_going_down = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Gravity and running
 	velocity.y += gravity
 	velocity.x = move_speed
 	velocity = move_and_slide(velocity)
 
-func _process(delta):
+func _process(_delta):
 	_process_state()
 
 func _input(event):
@@ -27,12 +27,14 @@ func _input(event):
 		is_do_jump = true
 
 func _process_state():
+#	Ground state check
 	if ground_check.is_colliding():
 		is_grounded = true
 		anim.play("run")
 	else:
 		is_grounded = false
 		
+#	process jump
 	if is_do_jump and is_grounded:
 		ground_check.set_enabled(false)
 		is_do_jump = false
@@ -41,11 +43,10 @@ func _process_state():
 		anim.queue("going-up")
 		yield(get_tree().create_timer(.3), "timeout")
 		ground_check.set_enabled(true)
-		
+	
+#	process fall state
 	if velocity.y > 0 and not is_grounded:
 		anim.play("fall")
-
-
 
 
 func _on_Timer_timeout():

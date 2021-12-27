@@ -6,7 +6,7 @@ onready var scene = load("res://Scenes/procedural-scenes/proc-map-01.tscn")
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
-func _on_ProceduralLogic_body_exited(body):
+func _on_ProceduralLogic_body_exited(_body):
 	var sceneInstance = scene.instance()
 	sceneInstance.position = spawnPosition.get_global_position()
-	get_parent().add_child(sceneInstance)
+	get_parent().call_deferred("add_child", sceneInstance)
