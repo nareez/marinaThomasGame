@@ -895,7 +895,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="collision" type="CollisionShape2D" parent="whenLoadNextScene"]
-position = Vector2( 32, 144 )
+position = Vector2( -32, 144 )
 shape = SubResource( 26 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

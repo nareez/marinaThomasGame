@@ -22,7 +22,7 @@ height = 14.0
 [sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("texture:texture")
+tracks/0/path = NodePath("texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -31,51 +31,15 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ ExtResource( 9 ) ]
+"values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("texture:hframes")
+tracks/1/path = NodePath("anim:playback_speed")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("texture:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("texture:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("anim:playback_speed")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -210,7 +174,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.7 ]
+"values": [ 0.5 ]
 }
 
 [node name="Player" type="KinematicBody2D"]
@@ -224,7 +188,7 @@ position = Vector2( 3, 4 )
 shape = SubResource( 2 )
 
 [node name="camera" type="Camera2D" parent="."]
-position = Vector2( 108, -32.5 )
+position = Vector2( 113.5, -41 )
 current = true
 drag_margin_left = 0.4
 drag_margin_top = 0.32
