@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Assets/Terrain/Terrain (16x16).png" type="Texture" id=1]
 [ext_resource path="res://Scenes/procedural-scenes/Procedural-logic.tscn" type="PackedScene" id=2]
@@ -8,9 +8,7 @@
 [ext_resource path="res://Assets/Terrain/1 - Grassland/Background parts/4 - Cloud_cover_2.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Terrain/1 - Grassland/Background parts/2 - Hills.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Terrain/1 - Grassland/Background parts/1 - Foreground_scenery.png" type="Texture" id=8]
-[ext_resource path="res://Scenes/procedural-scenes/proc-map-02.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/procedural-scenes/proc-map-03.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/procedural-scenes/proc-map-01.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/Menu/Buttons/Back.png" type="Texture" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -969,12 +967,6 @@ position = Vector2( 640, 0 )
 
 [node name="proc-map-03" parent="Procedural-logic" instance=ExtResource( 10 )]
 position = Vector2( 0, 464 )
-
-[node name="proc-map-01" parent="Procedural-logic" instance=ExtResource( 11 )]
-position = Vector2( -16, 432 )
-
-[node name="proc-map-02" parent="Procedural-logic" instance=ExtResource( 9 )]
-position = Vector2( -16, 432 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

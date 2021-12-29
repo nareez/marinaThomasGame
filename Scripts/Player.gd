@@ -3,9 +3,9 @@ extends KinematicBody2D
 onready var ground_check = $ground_check
 onready var anim = $anim
 var velocity = Vector2.ZERO
-var move_speed = 240
-const MAX_MOVESPEED = 4000
-var move_speed_multiplier = 1.01
+var move_speed = 120.0
+const MAX_MOVESPEED = 40000
+var move_speed_inc = 15.0
 var gravity = 20
 var jump_force = -600
 var is_grounded = true
@@ -16,7 +16,7 @@ func _physics_process(_delta):
 	# Gravity and running
 	velocity.y += gravity
 	velocity.x = move_speed
-	velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity, Vector2.UP)
 
 func _process(_delta):
 	_process_state()
@@ -49,20 +49,36 @@ func _process_state():
 
 # A cada passada de tempo aumenta a velocidade do personagem
 func _on_Timer_timeout():
-	var runAnim = anim.get_animation("run")
-	var idx = runAnim.find_track("anim:playback_speed")
-	var animSpeed = runAnim.track_get_key_value(idx, 0)
+	var animSpeed = _getAnimationSpeed("run")
+	move_speed += move_speed_inc
+	animSpeed *= 1+(move_speed_inc / move_speed)
+	print (move_speed_inc / move_speed)
+	_setAnimationSpeed("run", animSpeed)
 	
-	move_speed *= move_speed_multiplier
-	animSpeed *= move_speed_multiplier
-	runAnim.track_set_key_value(idx, 0, animSpeed)
 	if move_speed > MAX_MOVESPEED:
 		move_speed = MAX_MOVESPEED
 		
 
+func _setAnimationSpeed(animName, animSpeed):
+	var anim = _getAnimation(animName)
+	var idx = anim.find_track("anim:playback_speed")
+	anim.track_set_key_value(idx, 0, animSpeed)
+	
+func _getAnimationSpeed(animName):
+	var anim = _getAnimation(animName)
+	var idx = anim.find_track("anim:playback_speed")
+	return anim.track_get_key_value(idx, 0)
+
+func _getAnimation(animName):
+	var runAnim = anim.get_animation(animName)
+	return runAnim
+
+func _died():
+	_setAnimationSpeed("run", 0.5)
+	get_tree().reload_current_scene()
 # implementar após a morte
 func _on_VisibilityNotifier2D_screen_exited():
-	get_tree().reload_current_scene()
+	_died()
 
 
 func _on_TextureButton_pressed():
