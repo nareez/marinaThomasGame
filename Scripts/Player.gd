@@ -63,3 +63,8 @@ func _on_Timer_timeout():
 # implementar após a morte
 func _on_VisibilityNotifier2D_screen_exited():
 	get_tree().reload_current_scene()
+
+
+func _on_TextureButton_pressed():
+	if is_grounded:
+		is_do_jump = true
