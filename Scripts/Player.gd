@@ -5,9 +5,9 @@ onready var anim = $anim
 var velocity = Vector2.ZERO
 var move_speed = 240
 const MAX_MOVESPEED = 4000
-var move_speed_multiplier = 1.2
+var move_speed_multiplier = 1.01
 var gravity = 20
-var jump_force = -750
+var jump_force = -600
 var is_grounded = true
 var is_do_jump = false
 var is_going_down = false
@@ -54,8 +54,12 @@ func _on_Timer_timeout():
 	var animSpeed = runAnim.track_get_key_value(idx, 0)
 	
 	move_speed *= move_speed_multiplier
-	animSpeed *= move_speed_multiplier / 1.1
+	animSpeed *= move_speed_multiplier
 	runAnim.track_set_key_value(idx, 0, animSpeed)
 	if move_speed > MAX_MOVESPEED:
 		move_speed = MAX_MOVESPEED
 		
+
+# implementar após a morte
+func _on_VisibilityNotifier2D_screen_exited():
+	get_tree().reload_current_scene()

@@ -1,12 +1,10 @@
 extends Node2D
 
-onready var spawnPosition = $spawnPosition
-onready var scene = load("res://Scenes/procedural-scenes/proc-map-01.tscn")
+onready var spawnPosition = $NextSceneSpawnPosition
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
 func _on_ProceduralLogic_body_exited(_body):
-	var sceneInstance = scene.instance()
-	sceneInstance.position = spawnPosition.get_global_position()
-	get_parent().call_deferred("add_child", sceneInstance)
+	get_parent().call_deferred("loadNewScene", spawnPosition)
+	
